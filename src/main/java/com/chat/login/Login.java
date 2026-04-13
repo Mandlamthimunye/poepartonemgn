@@ -1,6 +1,6 @@
 package com.chat.login;
 
-import java.util.Scanner;  // Import for Scanner
+import java.util.Scanner;  // Import for Scanner 
 
 /**
  * Login class for user registration and authentication
@@ -14,8 +14,8 @@ public class Login {//first class for login
     private String firstName;
     private String lastName;
     
-    // Default constructor
-    public Login() {
+    
+    public Login() {//default constructor
         this.username = "";
         this.password = "";
         this.cellPhoneNumber = "";
@@ -176,7 +176,7 @@ public class Login {//first class for login
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
         
-        // Create a new Login object
+        // A new Login object
         Login user = new Login();
         
         System.out.println("===== User Registration =====");
@@ -205,7 +205,7 @@ public class Login {//first class for login
         // Attempt registration
         System.out.println("\n" + user.registerUser());
         
-        // If registration successful, proceed to login
+        // If registration is successful, proceed to login
         if (user.registerUser().equals("User successfully registered!")) {
             System.out.println("\n===== User Login =====");
             System.out.print("Enter username: ");
