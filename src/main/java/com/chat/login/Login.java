@@ -4,8 +4,8 @@ import java.util.Scanner;  // Import for Scanner
 
 /**
  * Login class for user registration and authentication
- * @author Mnadla Mthimunye(ST10527946)
- * @version 1.0
+ * @author Mandla Mthimunye(ST10527946)
+ * https://github.com/Mandlamthimunye/poepartonemgn.git
  */
 public class Login {//first class for login 
     private String username;
