@@ -24,6 +24,36 @@
             <version>5.10.3</version>
             <scope>test</scope>
         </dependency>
+        
+        
+       
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20240303</version>
+    </dependency>
+ 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <dependency>
             <groupId>org.opentest4j</groupId>
             <artifactId>opentest4j</artifactId>
@@ -48,4 +78,5 @@
         <maven.compiler.release>25</maven.compiler.release>
         <exec.mainClass>com.chat.login.Login</exec.mainClass>
     </properties>
+    
 </project>

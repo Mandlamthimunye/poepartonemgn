@@ -1,0 +1,18 @@
+=====Message Details=====
+Message ID: 4264042601
+Recipient : +2764005
+Message Text: you have a meeting today
+Message Hash: 42:0:YOUTODAY
+-----------------------------------
+=====Message Details=====
+Message ID: 4084840803
+Recipient : +27632776357
+Message Text: how was your day
+Message Hash: 40:0:HOWDAY
+=====END MESSAGE DETAILS=====
+=====Message Details=====
+Message ID: 7057070503
+Recipient : +27640056015
+Message Text: are you having a long day?
+Message Hash: 70:0:AREDAY?
+=====END MESSAGE DETAILS=====

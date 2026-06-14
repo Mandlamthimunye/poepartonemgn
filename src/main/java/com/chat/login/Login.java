@@ -191,8 +191,8 @@ public class Login {//first class for login details
     }
 
 
-    //unique message ID generator
-    public static  String generateUniqueMessageId(String recipient, int counter){
+    //unique message ID generator method
+    public static  String generateUniqueMessageId(String recipient, int counter){//start of unique message generator method
      Random random = new Random();
      StringBuilder randomPart = new StringBuilder(10);
      for (int i = 0; i < 5; i++) {
@@ -216,22 +216,24 @@ public class Login {//first class for login details
         String counterPart = String.format("%02d", counter);
 
         return randomPart.toString() + subPart + counterPart;
-    }
+        
+    }//end of unique message generator method
     
     // Messaging menu for user interaction
-    public static void messagingMenu(Scanner userInput) {
+    public static void messagingMenu(Scanner userInput) {//start of messaging menu method
 
         boolean inMessaging = true;
-        while (inMessaging) {
-        System.out.println("===== Messaging Menu =====");
+        while (inMessaging) {//start of while loop
+        System.out.println("===== MESSAGING MENU =====");
         System.out.println("1. New Message");
         System.out.println("2. View Sent Messages");
         System.out.println("3. View total number of messages sent");
         System.out.println("4. Exit Messaging Menu");
+        System.out.println("====END OF MESSAGING MENU====");
         System.out.print("Enter your choice: ");
         int choice = readInt(userInput);
         
-        switch (choice) {
+        switch (choice) {//start of switch statement
             case 1:
                 composeMessage(userInput);
                 break;
@@ -247,12 +249,14 @@ public class Login {//first class for login details
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
-        }
-    }
-}
+        }//end of switch statement
+        
+    }//end of while loop
+        
+}//end of messaging method
 
 // Method to compose a new message
-    private static void composeMessage(Scanner userInput) {//start of method
+    private static void composeMessage(Scanner userInput) {//start of compose message method
 
         System.out.println("Are sending multiple messages? ");
         String numOfMessages = userInput.nextLine().trim().toLowerCase();
@@ -267,8 +271,8 @@ public class Login {//first class for login details
                 return;
             }//end of if statement
 
-            // Loop to compose and send multiple messages
-            for(int i = 1; i <= count; i++){
+            // for Loop to compose and send multiple messages
+            for(int i = 1; i <= count; i++){//start of for loop
 
                 System.out.println("Enter recipient's cell phone number (format: + followed by 8-12 digits, e.g., +27831234567): ");
                 String recipient = userInput.nextLine().trim();
@@ -293,11 +297,12 @@ public class Login {//first class for login details
                  continue;
                  }//end of if statement
 
-                 System.out.println("===== Message entered ===== .");
+                 System.out.println("===== MESSAGE ENTERED MENU ===== .");
         System.out.println("What would you like to do with the message?");
         System.out.println("1. Send Message");
         System.out.println("2. Save Message");
-        System.out.println("3. Discard Message");
+        System.out.println("3. Disregarded Message");
+        System.out.println("=====END OF MESSAGE ENTERED MENU=====");
         System.out.print("Enter your choice: ");
         int choice = readInt(userInput);
         
@@ -320,9 +325,10 @@ public class Login {//first class for login details
                 break;
 
             case 3:
-                System.out.println("Message discarded.");
+                System.out.println("Message disregarded.");
+                message.disregarded();
                 break;
-
+                
             default:
 
                 System.out.println("Invalid choice. Please try again.");
@@ -356,11 +362,12 @@ public class Login {//first class for login details
          return;
          }//end of if statement
 
-         System.out.println("===== Message entered ===== .");
+        System.out.println("===== Message Entered Menu ===== .");
         System.out.println("What would you like to do with the message?");
         System.out.println("1. Send Message");
         System.out.println("2. Save Message");
-        System.out.println("3. Discard Message");
+        System.out.println("3. Disregarded Message");
+        System.out.println("===== END MESSAGE ENTERED =====");
         System.out.print("Enter your choice: ");
         int choice = readInt(userInput);
         
@@ -379,11 +386,12 @@ public class Login {//first class for login details
             case 2:
                 System.out.println("Message saved successfully!");
                 message.prepareForStorage();
-                message.storeMessage(); 
+                message.storeMessage();
+                StoredMessageManager.addStoredMessage(message);
                 break;
 
             case 3:
-                System.out.println("Message discarded.");
+                System.out.println("Message disregarded.");
                 break;
 
             default:
@@ -393,10 +401,10 @@ public class Login {//first class for login details
         } //end of switch case 
 
     }//end of else statement
-}//end of method
+}//end of compose message method
 
     // Method to validate recipient cell phone number
-    private static int readInt(Scanner userInput) {//start of method
+    private static int readInt(Scanner userInput) {//start of read int method
 
       while(true){//loop until valid input is received
 
@@ -410,9 +418,9 @@ public class Login {//first class for login details
 
         }
 
-      }//
+      }//end of while loop
 
-    }//end of method
+    }//end of read int method
 
      // Main menu method for user interaction
     private static void mainMenu(Scanner userInput){//start of method
@@ -423,25 +431,32 @@ public class Login {//first class for login details
 
 
             System.out.println("===== Welcome to QuickChat =====");
-            System.out.println("1. Send Message");
-            System.out.println("2. Coming soon!");
-            System.out.println("3. Quit");
+            System.out.println("=====QUICKCHAT MENU=====");
+            System.out.println("1. Send Messages");
+            System.out.println("2. Stored Messages");
+            System.out.println("3.Coming soon!");
+            System.out.println("4. Quit");
+            System.out.println("=====END OF QUICKCHAT=====");
             System.out.print("choose option: ");
-            int choice = readInt(userInput);
+            int option = readInt(userInput);
             
-            switch(choice){//start of switch case
+            switch(option){//start of switch case
 
                 case 1:
                     messagingMenu(userInput);
                     break;
 
                 case 2:
-                    inMainMenu = false;
-                    System.out.println("This feature is coming soon!.");
+                    storedMessagesMenu(userInput);
+                    
                     break;
                 case 3:
-                    System.out.println("Goodbye");
+                    System.out.println("This feature is coming soon!");
                     break;
+                case 4:
+                    System.out.println("Thank you for using QuickChat. Goodbye!");
+                    inMainMenu = false;
+                    
                 default:
                     System.out.println("Invalid choice. Please try again.");
 
@@ -451,17 +466,76 @@ public class Login {//first class for login details
 
     }//end of method
     
+    private static void storedMessagesMenu(Scanner userInput){//start of stored message menu method
+        boolean inStoredMenu = true;
+        
+        while(inStoredMenu){//start of while loop
+           System.out.println("==== STORED MESSAGES MENU ====");
+           System.out.println("a. Display all stored messages(recipient and message)");
+           System.out.println("b. Display the the longest message");
+           System.out.println("c. Search by message Id");
+           System.out.println("d. Search for all messages by recipient");
+           System.out.println("e. Delete message using message hash");
+           System.out.println("f. Display full report of all stored messages");
+           System.out.println("g.Back to Main Menu");
+           
+           System.out.print("Select: ");
+           String option = userInput.nextLine().trim().toLowerCase();
+           
+           switch(option){//start of switch statement 
+               case "a":
+                   System.out.println(StoredMessageManager.displayAllStoredMessage());
+                   break;
+                   
+               case "b" :
+                   System.out.println(StoredMessageManager.getLongestMessage());
+                   break;
+                   
+               case "c" :
+                   System.out.print("Please enter message ID:");
+                   String messageId = userInput.nextLine();
+                   System.out.println(StoredMessageManager.searchByMessageId(messageId));
+                   break;
+                   
+               case "d" :
+                   System.out.println("Enter recipient Number:");
+                   String recipient = userInput.nextLine();
+                   System.out.println(StoredMessageManager.searchByRecipient(recipient));
+                   break;
+                   
+               case "e" :
+                   System.out.print("Enter message hash to delete:");
+                   String messageHash = userInput.nextLine();
+                   boolean deleted = StoredMessageManager.deleteByMessageHash(messageHash);
+                   System.out.println(deleted ? "Message deleted successfully.": "messageHash not found.");
+                   break;
+                   
+               case "f" :
+                   System.out.println(StoredMessageManager.getDisplayFullReport());
+                   break;
+                   
+               case "g" :
+                   inStoredMenu = false;
+                   break;
+                   
+               default:
+                   System.out.println("Invalid option. ");   
+           }
+        }//end of while loop
+    }//end of method
+    
 
 
      //Main method for registration and login with user input.
-    public static void main(String[] args) {//main method
+    public static void main(String[] args) {//Start of main method
 
+        StoredMessageManager.readFromJSON(); //load existing stored messages
         Scanner userInput = new Scanner(System.in);
                   
         // Create a new Login object
         Login user = new Login();
         
-        System.out.println("===== User Registration =====");
+        System.out.println("===== USER REGISTRATION =====");
         
         // Get user details
         System.out.print("Enter username (must contain '_' and be <= 5 characters): ");
@@ -497,20 +571,20 @@ public class Login {//first class for login details
         }
 
         // Login process
-            System.out.println("\n===== User Login =====");
+            System.out.println("===== USER LOGIN =====");
             System.out.print("Enter username: ");
             String loginUsername = userInput.nextLine();
             System.out.print("Enter password: ");
             String loginPassword = userInput.nextLine();
             
             System.out.println(user.returnLoginStatus(loginUsername, loginPassword));
-            if (user.loginUser(loginUsername, loginPassword)) {
+            if (user.loginUser(loginUsername, loginPassword)) {//start of if statement
                 mainMenu(userInput);
             } else {
                 System.out.println("Login failed. Exiting.");
-            }
+            }//end of if statement
+            
             userInput.close();
-        }    
-    }//end of main method
+        }//end of main method    
+    }//end of first class 
 
-    
